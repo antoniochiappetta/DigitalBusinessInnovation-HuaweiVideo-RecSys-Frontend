@@ -1,7 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+// Components
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
+import { AuthGuard } from './guards/auth.guard';
+import { RegistrationComponent } from './components/registration/registration.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent, /*canActivate: [AuthGuard] */}, //TODO: uncomment AuthGuard once finished
+  { path: 'login', component: LoginComponent },
+  { path: 'registration', component: RegistrationComponent },
+  { path: 'movie-detail', component: MovieDetailComponent, /*canActivate: [AuthGuard] */}, //TODO: uncomment AuthGuard once finished
+  { path: '**', redirectTo: 'home' }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

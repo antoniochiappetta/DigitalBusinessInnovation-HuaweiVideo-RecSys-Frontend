@@ -1,3 +1,8 @@
+a {
+    display: inline-block;
+    z-index: 10;
+}
+
 .top-bar {
     position: fixed;
     left: 0;
@@ -31,6 +36,12 @@
     display: inline-block;
     color: white;
     line-height: 3rem;
+}
+
+.profile-icon {
+    height: 45px;
+    float: right;
+    margin: 4px 0 0 20px;
 }
 
 .search-box::placeholder {
@@ -94,7 +105,7 @@
     margin-top: 40px;
 }
 
-.gallery-container>h3 {
+.gallery-container > h3 {
     color: #888;
 }
 
@@ -113,8 +124,9 @@
 
 .gallery-cell {
     display: inline-block;
-    width: 200px;
-    height: 300px;
+    position: relative;
+    width: 10vw;
+    height: 15vw;
     margin-right: 10px;
     background: #ff9826;
     counter-increment: gallery-cell;
@@ -123,11 +135,34 @@
 
 /* cell number */
 
-.gallery-cell:before {
+a::before > .gallery-cell {
     display: block;
     text-align: center;
     content: counter(gallery-cell);
-    line-height: 300px;
     font-size: 80px;
     color: white;
+}
+
+@media screen and (max-width: 700px), screen and (min-resolution: 300dpi) {
+    .top-bar{
+        padding: 10px 20px;
+    }
+
+    .title {
+        display: none;
+    }
+    
+    .search-box:focus {
+        width: 60%;
+        min-width: 5em;
+    }
+
+    .gallery-cell {
+        width: 20vw;
+        height: 30vw;
+    }
+
+    .gallery-container > h3 {
+        font-size: 12pt;
+    }
 }

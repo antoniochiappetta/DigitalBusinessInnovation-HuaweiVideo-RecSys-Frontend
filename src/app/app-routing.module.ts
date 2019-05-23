@@ -9,10 +9,11 @@ import { AuthGuard } from './guards/auth.guard';
 import { RegistrationComponent } from './components/registration/registration.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent, /*canActivate: [AuthGuard] */}, //TODO: uncomment AuthGuard once finished
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'movie-detail', component: MovieDetailComponent, canActivate: [AuthGuard] },
+  { path: 'movie-detail', component: MovieDetailComponent, /*canActivate: [AuthGuard] */}, //TODO: uncomment AuthGuard once finished
   { path: '**', redirectTo: 'home' }
 ];
 

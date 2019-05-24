@@ -10,6 +10,8 @@ import { map } from 'rxjs/operators';
 export class MovieService {
     constructor(private http: HttpClient) { }
 
+    // MARK: - Movies and recommendations from our backend
+
     getMovieById(id: number): Observable<Movie> {
         return this.http.get<Movie>(`${Network.apiUrl}/movie/${id}`);
     }
@@ -32,5 +34,27 @@ export class MovieService {
                 q: query
             }
         }).pipe(map(data => data.items));
+    }
+
+    // MARK: - Images from TheMovieDB
+
+    getMovieImages(movie: Movie): Observable<any> {
+        return this.http.get<any>(`${Network.tmdbApiUrl}/${movie.tmdbId}/images?api_key=${Network.tmdbApiKey}`);
+    }
+
+    getMovieBackdrop(imagesResponse: any): Observable<Blob> {
+        let imagePath = imagesResponse.backdrops[0].file_path;
+        return this.http.get(`${Network.tmdbImageUrl}/${imagePath}`, { responseType: 'blob' });
+    }
+
+    getMoviePoster(imagesResponse: any): Observable<Blob> {
+        let imagePath = imagesResponse.posters[0].file_path;
+        return this.http.get(`${Network.tmdbImageUrl}/${imagePath}`, { responseType: 'blob' });
+    }
+
+    // MARK: - Youtube Trailers
+
+    getYoutubeTrailer(movie: Movie): string {
+        return `${Network.youtubeUrl}/${movie.video}`
     }
 }

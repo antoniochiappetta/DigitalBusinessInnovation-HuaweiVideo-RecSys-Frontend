@@ -5,7 +5,7 @@
             <h1 class="title">HUAWEI VIDEO</h1>
         </a>
     </div>
-    <img class="logout-icon" src="../../../assets/images/baseline_logout_white_48dp.png">
+    <input type="image" class="logout-icon" src="../../../assets/images/baseline_logout_white_48dp.png" (click)="logout()">
     <input class="search-box" [(ngModel)]="query" (ngModelChange)="getSearchResults()" type="text"
         onclick="this.select()" autocomplete="off" maxlength="25">
 </div>
@@ -15,7 +15,7 @@
         <h3>TOP POPULAR MOVIES</h3>
         <div class="gallery">
             <a *ngFor="let topPopMovie of topPopMovies">
-                <div class="gallery-cell" style="background-image: url({{trustedSrc}});"></div>
+                <div class="gallery-cell" style="background-image: url({{topPopMovie}});"></div>
             </a>
         </div>
     </div>

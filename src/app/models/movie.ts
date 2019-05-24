@@ -5,5 +5,7 @@ export class Movie {
     rating: {
         score: number;
         support: number;
-    }
+    };
+    tmdbId: number;
+    video: string;
 }

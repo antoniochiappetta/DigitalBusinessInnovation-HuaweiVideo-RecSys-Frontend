@@ -1,6 +1,5 @@
 a {
     display: inline-block;
-    z-index: 10;
 }
 
 .top-bar {
@@ -11,6 +10,7 @@ a {
     background-color: #ff9826;
     top: 0;
     box-shadow: 0px 6px 11px -1px rgba(0, 0, 0, 0.3);
+    z-index: 20;
 }
 
 .fake-top-bar {
@@ -75,7 +75,7 @@ a {
 .search-box:focus {
     outline: none;
     width: 20%;
-    min-width: 10em;
+    min-width: 9.5em;
     border-bottom: 2px solid white;
     -webkit-transition: width 0.3s, min-width 0.3s;
     transition: width 0.3s, min-width 0.3s;
@@ -90,7 +90,7 @@ a {
 }
 
 .gallery {
-    overflow-x: scroll;
+    overflow-x: visible;
     overflow-y: hidden;
     white-space: nowrap;
     display: block;
@@ -100,6 +100,7 @@ a {
 }
 
 .gallery-container {
+    overflow-x: visible;
     width: 80vw;
     margin-left: calc(50% - 40vw);
     margin-top: 40px;

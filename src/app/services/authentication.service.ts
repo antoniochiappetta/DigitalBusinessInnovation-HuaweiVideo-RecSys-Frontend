@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, mergeMap, flatMap } from 'rxjs/operators';
 
 import { User } from '../models/user';
 import { Network } from '../models/network';
@@ -10,14 +10,20 @@ import { UserService } from './user.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    private currentUserSubject: BehaviorSubject<User>;
+    private currentTokenSubject: BehaviorSubject<String>;
+    public currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
 
     constructor(
         private http: HttpClient, 
         private userService: UserService) {
+        this.currentTokenSubject = new BehaviorSubject<String>(localStorage.getItem('currentToken'));
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
+    }
+
+    public get currentTokenValue(): String {
+        return this.currentTokenSubject.value;
     }
 
     public get currentUserValue(): User {
@@ -25,24 +31,19 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
-        return this.http.post<any>(`${Network.apiUrl}/token`, {
-            headers: {
-                Authorization: `Basic ${window.btoa(username + ':' + password)}`
-            }
+        localStorage.removeItem('currentToken');
+        this.currentTokenSubject.next(null);
+        return this.http.post<any>(`${Network.apiUrl}/token`, null, {
+            headers: new HttpHeaders().set('Authorization', `Basic ${window.btoa(username + ':' + password)}`)
         })
-            .pipe(map(res => {
-                // login successful if there's a jwt token in the response
-                if (res.sub && res.token) {
-                    this.userService.getById(res.sub).subscribe(user => {
-                        // store user details and jwt token in local storage to keep user logged in between page refreshes
-                        user.token = res.token;
-                        localStorage.setItem('currentUser', JSON.stringify(user));
-                        this.currentUserSubject.next(user);
-                    })
-                }
+    }
 
-                return res;
-            }));
+    getUser(loginReponse: any) {
+        let value = loginReponse
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem('currentToken', value.token);
+        this.currentTokenSubject.next(value.token);
+        return this.userService.getById(value.sub);
     }
 
     logout() {

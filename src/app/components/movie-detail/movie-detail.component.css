@@ -1,0 +1,42 @@
+.top-bar {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    padding: 10px 50px;
+    background-color: #ff9826;
+    top: 0;
+    box-shadow: 0px 6px 11px -1px rgba(0, 0, 0, 0.3);
+    z-index: 20;
+}
+
+.fake-top-bar {
+    margin-bottom: 60px;
+}
+
+.hv-logo {
+    position: relative;
+    display: inline;
+    height: 3rem;
+    float: left;
+    margin: .1rem 15px .25rem 0;
+}
+
+.title-container-left {
+    display: inline;
+    float: left;
+    position: relative;
+    width: auto;
+}
+
+.title {
+    display: inline-block;
+    color: white;
+    line-height: 3rem;
+}
+
+.logout-icon {
+    height: 45px;
+    float: right;
+    margin: 4px 0 0 20px;
+    cursor: pointer;
+}

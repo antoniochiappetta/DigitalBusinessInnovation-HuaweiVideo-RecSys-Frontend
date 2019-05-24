@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 
 import { User } from '../../models/user';
 import { Movie } from '../../models/movie';
-import { UserService } from '../../services/user.service';
 import { MovieService } from '../../services/movie.service';
 import { AuthenticationService } from '../../services/authentication.service';
+import { InteractionService } from '../../services/interaction.service';
 import { AlertService } from '../../services/alert.service';
 import { EmbedVideoService } from 'ngx-embed-video';
+import { Interaction } from 'src/app/models/interaction';
 
 @Component({
   selector: 'movie-detail',
@@ -31,6 +32,7 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
+    private interactionService: InteractionService,
     private alertService: AlertService,
     private movieService: MovieService,
     private embedService: EmbedVideoService
@@ -49,6 +51,7 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
     this.movie.tmdbId = 420817
     this.movie.video = "JcMtWwiyzpU"
     this.getImages();
+    this.setInteraction();
     this.iframe = this.embedService.embed(this.movieService.getYoutubeTrailer(this.movie));
   }
 
@@ -109,6 +112,24 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
         console.log(error);
       });
     })
+  }
+
+  // MARK: - Interaction
+
+  setInteraction() {
+    let interaction = new Interaction()
+    interaction.user_id = this.currentUser.id;
+    interaction.movie_id = this.movie.id;
+    this.loading = true;
+    this.interactionService.registerInteraction(interaction).subscribe(
+      data => {
+        this.loading = false;
+      },
+      error => {
+        this.loading = false;
+        console.log(error);
+      }
+    )
   }
 
 }

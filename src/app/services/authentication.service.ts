@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, mergeMap, flatMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { User } from '../models/user';
 import { Network } from '../models/network';
@@ -51,6 +51,7 @@ export class AuthenticationService {
             .pipe(map(res => {
                 // remove user from local storage to log user out
                 localStorage.removeItem('currentUser');
+                localStorage.removeItem('currentToken');
                 this.currentUserSubject.next(null);
                 
                 return res;

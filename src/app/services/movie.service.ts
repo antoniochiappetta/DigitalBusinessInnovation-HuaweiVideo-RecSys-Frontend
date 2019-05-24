@@ -13,16 +13,16 @@ export class MovieService {
         return this.http.get<Movie>(`${Network.apiUrl}/movie/${id}`);
     }
 
-    getTopPop(id: number): Observable<Movie[]> {
+    getTopPop(): Observable<Movie[]> {
         return this.http.get<Movie[]>(`${Network.apiUrl}/movie/toppop`);
     }
 
-    getWatchedByUserId(id: number): Observable<Movie[]> {
-        return this.http.get<Movie[]>(`${Network.apiUrl}/movie/watched/${id}`);
+    getWatchedByUserId(user_id: number): Observable<Movie[]> {
+        return this.http.get<Movie[]>(`${Network.apiUrl}/movie/watched/${user_id}`);
     }
 
-    getRecommendedByUserId(id: number): Observable<Movie[]> {
-        return this.http.get<Movie[]>(`${Network.apiUrl}/movie/recommended/${id}`);
+    getRecommendedByUserId(user_id: number): Observable<Movie[]> {
+        return this.http.get<Movie[]>(`${Network.apiUrl}/movie/recommended/${user_id}`);
     }
 
     getMoviesByKeywords(query: string[]): Observable<Movie[]> {

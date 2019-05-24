@@ -38,10 +38,11 @@ a {
     line-height: 3rem;
 }
 
-.profile-icon {
+.logout-icon {
     height: 45px;
     float: right;
     margin: 4px 0 0 20px;
+    cursor: pointer;
 }
 
 .search-box::placeholder {

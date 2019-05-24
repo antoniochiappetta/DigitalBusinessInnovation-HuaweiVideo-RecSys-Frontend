@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { first } from 'rxjs/operators';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { User } from '../../models/user';
 import { Movie } from '../../models/movie';
@@ -15,6 +15,7 @@ import { AuthenticationService } from '../../services/authentication.service'
 
 })
 export class HomeComponent implements OnInit, OnDestroy {
+    searchForm: FormGroup;
     currentUser: User;
     currentUserSubscription: Subscription;
     topPopMovies: Movie[] = [];
@@ -35,7 +36,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     getTopPopMovies(): void {
         this.movieService.getTopPop()
-            .subscribe(topPopMovies => this.topPopMovies = topPopMovies);
+            .subscribe(topPopMovies =>
+                this.topPopMovies = topPopMovies);
     }
 
     getRecommendedMovies(): void {
@@ -55,9 +57,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     
     ngOnInit() {
-        // this.getTopPopMovies();
-        // this.getRecommendedMovies();
-        // this.getWatchedMovies();
+        this.getTopPopMovies();
+        this.getRecommendedMovies();
+        this.getWatchedMovies();
     }
 
     ngOnDestroy() {

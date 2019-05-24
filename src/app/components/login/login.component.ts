@@ -7,8 +7,8 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { AlertService } from '../../services/alert.service';
 
 @Component({
-  selector: 'login',
-  templateUrl: './login.component.html'
+    selector: 'login',
+    templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
         private alertService: AlertService
     ) {
         // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) { 
+        if (this.authenticationService.currentUserValue) {
             this.router.navigate(['/home']);
         }
     }
@@ -56,20 +56,20 @@ export class LoginComponent implements OnInit {
                 data => {
                     if (data.sub && data.token) {
                         this.authenticationService.getUser(data)
-                        .subscribe(
-                            user => {
-                                localStorage.setItem('currentUser', JSON.stringify(user));
-                                this.authenticationService.currentUserSubject.next(user);
-                                console.log("got user")
-                                console.log('login -next');
-                                this.router.navigate(['/home']);
-                            },
-                            error => {
-                                console.log("login -error");
-                                this.alertService.error(error);
-                                this.loading = false;
-                            }
-                        )
+                            .subscribe(
+                                user => {
+                                    localStorage.setItem('currentUser', JSON.stringify(user));
+                                    this.authenticationService.currentUserSubject.next(user);
+                                    console.log("got user")
+                                    console.log('login -next');
+                                    this.router.navigate(['/home']);
+                                },
+                                error => {
+                                    console.log("login -error");
+                                    this.alertService.error(error);
+                                    this.loading = false;
+                                }
+                            )
                     }
                 },
                 error => {

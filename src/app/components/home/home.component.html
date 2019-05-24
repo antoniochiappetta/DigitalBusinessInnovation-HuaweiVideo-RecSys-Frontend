@@ -6,65 +6,44 @@
         </a>
     </div>
     <img class="logout-icon" src="../../../assets/images/baseline_logout_white_48dp.png">
-    <input class="search-box" type="text" onclick="this.select()">
+    <input class="search-box" [(ngModel)]="query" (ngModelChange)="getSearchResults()" type="text"
+        onclick="this.select()" autocomplete="off" maxlength="25">
 </div>
 
-<div class="fake-top-bar"></div>
+<div *ngIf="!searchResults.length" class="page-container-without-search">
+    <div class="gallery-container">
+        <h3>TOP POPULAR MOVIES</h3>
+        <div class="gallery">
+            <a *ngFor="let topPopMovie of topPopMovies">
+                <div class="gallery-cell" style="background-image: url({{trustedSrc}});"></div>
+            </a>
+        </div>
+    </div>
 
-<div class="gallery-container">
-    <h3>TOP POPULAR MOVIES</h3>
-    <div class="gallery">
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
+    <div class="gallery-container">
+        <h3>CHOSEN FOR YOU</h3>
+        <div class="gallery">
+            <a *ngFor="let recommendedMovie of recommendedMovies">
+                <div class="gallery-cell"></div>
+            </a>
+        </div>
+    </div>
+
+    <div class="gallery-container">
+        <h3>CONTINUE WATHCING</h3>
+        <div class="gallery">
+            <a *ngFor="let watchedMovie of watchedMovies">
+                <div class="gallery-cell"></div>
+            </a>
+        </div>
     </div>
 </div>
 
-<div class="gallery-container">
-    <h3>CHOSEN FOR YOU</h3>
-    <div class="gallery">
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
+<div *ngIf="searchResults.length" class="page-container-with-search">
+    <div class="search-results-container">
+        <h3>SEARCH RESULTS</h3>
+        <a *ngFor="let searchResult of searchResults">
+            <div class="search-cell"></div>
+        </a>
     </div>
 </div>
-
-<div class="gallery-container">
-    <h3>MOST RECENT</h3>
-    <div class="gallery">
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-        <a><div class="gallery-cell"></div></a>
-    </div>
-</div>
-

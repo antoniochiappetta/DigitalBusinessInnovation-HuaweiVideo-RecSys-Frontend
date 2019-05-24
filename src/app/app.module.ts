@@ -3,6 +3,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { EmbedVideo } from 'ngx-embed-video';
 
 // Third parties modules
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -26,7 +27,8 @@ import { RegistrationComponent } from './components/registration/registration.co
         ReactiveFormsModule,
         HttpClientModule,
         AppRoutingModule,
-        NgbModule
+        NgbModule,
+        EmbedVideo.forRoot()
     ],
     declarations: [
         AppComponent,

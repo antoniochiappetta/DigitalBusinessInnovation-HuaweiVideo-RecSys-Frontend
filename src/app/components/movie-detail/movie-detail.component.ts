@@ -8,6 +8,7 @@ import { UserService } from '../../services/user.service';
 import { MovieService } from '../../services/movie.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { AlertService } from '../../services/alert.service';
+import { EmbedVideoService } from 'ngx-embed-video';
 
 @Component({
   selector: 'movie-detail',
@@ -15,16 +16,24 @@ import { AlertService } from '../../services/alert.service';
   styleUrls: ['./movie-detail.component.css']
 })
 export class MovieDetailComponent implements OnInit, OnDestroy {
+
+  // MARK: - Properties
+
   loading = false;
   currentUser: User;
   currentUserSubscription: Subscription;
   movie: Movie;
 
+  backdrop: any;
+  poster: any;
+  iframe: any;
+
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
     private alertService: AlertService,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private embedService: EmbedVideoService
   ) {
     this.currentUserSubscription = this.authenticationService.currentUserSubject.subscribe(user => {
       this.currentUser = user;
@@ -40,6 +49,7 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
     this.movie.tmdbId = 420817
     this.movie.video = "JcMtWwiyzpU"
     this.getImages();
+    this.iframe = this.embedService.embed(this.movieService.getYoutubeTrailer(this.movie));
   }
 
   ngOnInit() {
@@ -67,9 +77,6 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
   }
 
   // MARK: - Images
-
-  backdrop: any;
-  poster: any;
 
   getImages() {
     this.loading = true;

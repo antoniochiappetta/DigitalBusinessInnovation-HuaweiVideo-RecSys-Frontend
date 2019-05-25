@@ -9,7 +9,7 @@
     <input class="search-box" [(ngModel)]="query" (ngModelChange)="getSearchResults()" type="text" onclick="this.select()" AutoComplete=off maxlength="25">
 </div>
 
-<div *ngIf="!searchResults.length" class="page-container-without-search">
+<div *ngIf="!query.length" class="page-container-without-search">
     <div class="gallery-container">
         <h3>TRENDING NOW</h3>
         <div class="gallery">
@@ -41,10 +41,10 @@
     </div>
 </div>
 
-<div *ngIf="searchResults.length" class="page-container-with-search">
+<div *ngIf="query.length" class="page-container-with-search">
     <div class="search-results-container">
-        <h3>RESULTS FOR "{{query}}"</h3>
-        <!-- <a *ngFor="let searchResult of searchResults" (click)="selectMovie(searchResult)"> -->
+        <h3>{{searchResults.length}} RESULTS FOR "{{query | uppercase}}"</h3>
+        <!-- <div class="search-cell" *ngFor="let searchResult of searchResults" (click)="selectMovie(searchResult)"></div> -->
             <div class="search-cell"></div>
             <div class="search-cell"></div>
             <div class="search-cell"></div>
@@ -61,6 +61,5 @@
             <div class="search-cell"></div>
             <div class="search-cell"></div>
             <div class="search-cell"></div>
-        <!-- </a> -->
     </div>
 </div>

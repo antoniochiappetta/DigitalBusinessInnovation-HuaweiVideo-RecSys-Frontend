@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+html {
+    background-color: #e9ecef;
+}
+
+.jumbotron{
+    border-radius: 0 !important;
+} 
+
+.jumbotron-return{
+    padding: 64px 32px;
+    background-color: #e9ecef;
+}
+
+/**
+ * Colors
+ */
+
+ :root {
+    --main-huawei-color: #f03d32;
+  }

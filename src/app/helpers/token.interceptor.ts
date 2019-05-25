@@ -3,6 +3,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable } from 'rxjs';
 
 import { AuthenticationService } from '../services/authentication.service';
+import { Network } from '../models/network';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -10,13 +11,17 @@ export class TokenInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add authorization header with jwt token if available
-        let currentUser = this.authenticationService.currentUserValue;
-        if (currentUser && currentUser.token) {
-            request = request.clone({
-                setHeaders: { 
-                    Authorization: `Bearer ${currentUser.token}`
-                }
-            });
+        if (request.url.startsWith(Network.apiUrl)) {
+            let currentToken = this.authenticationService.currentTokenValue;
+            console.log('Looking for token');
+            console.log(currentToken);
+            if (currentToken) {
+                request = request.clone({
+                    setHeaders: { 
+                        Authorization: `Bearer ${currentToken}`
+                    }
+                });
+            }
         }
 
         return next.handle(request);

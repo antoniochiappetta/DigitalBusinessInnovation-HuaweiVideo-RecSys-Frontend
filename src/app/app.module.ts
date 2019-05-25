@@ -1,14 +1,15 @@
 // Angular modules
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule }    from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { EmbedVideo } from 'ngx-embed-video';
 
 // Third parties modules
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Starting point
-import { AppComponent }  from './app.component';
+import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 // App components and intereceptors
@@ -26,7 +27,9 @@ import { RegistrationComponent } from './components/registration/registration.co
         ReactiveFormsModule,
         HttpClientModule,
         AppRoutingModule,
-        NgbModule
+        NgbModule,
+        FormsModule,
+        EmbedVideo.forRoot()
     ],
     declarations: [
         AppComponent,

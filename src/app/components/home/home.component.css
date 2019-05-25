@@ -2,45 +2,6 @@ a {
     display: inline-block;
 }
 
-.top-bar {
-    position: fixed;
-    left: 0;
-    width: 100%;
-    padding: 10px 50px;
-    background-color: var(--main-huawei-color);
-    top: 0;
-    box-shadow: 0px 6px 11px -1px rgba(0, 0, 0, 0.3);
-    z-index: 20;
-}
-
-.hv-logo {
-    position: relative;
-    display: inline;
-    height: 3rem;
-    float: left;
-    margin: .1rem 15px .25rem 0;
-}
-
-.title-container-left {
-    display: inline;
-    float: left;
-    position: relative;
-    width: auto;
-}
-
-.title {
-    display: inline-block;
-    color: white;
-    line-height: 3rem;
-}
-
-.logout-icon {
-    height: 45px;
-    float: right;
-    margin: 4px 0 0 20px;
-    cursor: pointer;
-}
-
 .search-box::placeholder {
     color: rgba(255, 255, 255, 0.6)
 }
@@ -50,17 +11,15 @@ a {
 }
 
 .search-box {
-    margin-top: 4px;
     border: none;
     padding: 3px 0px 3px 45px;
     overflow: hidden;
     background: transparent;
-    color: rgba(255, 255, 255, 0);
-    font-size: 16pt;
+    color: transparent;
+    font-size: 18pt;
     float: right;
-    width: 2em;
-    min-width: 2em;
-    line-height: 2.5rem;
+    width: 45px;
+    min-width: 45px;
     -webkit-transition: width 0.3s, min-width 0.3s;
     transition: width 0.3s, min-width 0.3s;
     background-image: url("../../../assets/images/baseline_search_white_48dp.png");
@@ -71,8 +30,8 @@ a {
 
 .search-box:focus {
     outline: none;
-    width: 20%;
-    min-width: 9.5em;
+    width: 240px;
+    min-width: 240px;
     border-bottom: 2px solid white;
     -webkit-transition: width 0.3s, min-width 0.3s;
     transition: width 0.3s, min-width 0.3s;
@@ -92,15 +51,15 @@ a {
     white-space: nowrap;
     display: block;
     padding: 5px;
-    width: 80vw;
-    margin-left: calc(50% - 40vw);
+    width: 85vw;
+    margin-left: calc(50% - 42.5vw);
 }
 
 .gallery-container {
     overflow-x: visible;
-    width: 80vw;
-    margin-left: calc(50% - 40vw);
-    margin-top: 40px;
+    margin: 20px 0;
+    width: 85vw;
+    margin-left: calc(50% - 42.5vw);
 }
 
 .gallery-container>h3, .search-results-container>h3 {
@@ -128,16 +87,6 @@ a {
     margin-right: 10px;
     background: var(--main-huawei-color);
     border-radius: 10px;
-}
-
-.cell-title {
-    display: block;
-    width: 10vw;
-    margin-right: 10px;
-    text-align: left;
-    white-space: normal;
-    font-size: 16pt;
-    color: #444;
 }
 
 .search-results-container {
@@ -179,19 +128,27 @@ a {
 }
 
 @media screen and (max-width: 700px), screen and (min-resolution: 300dpi) {
-    .top-bar {
-        padding: 10px 20px;
-    }
-    .title {
-        display: none;
+    .search-box {
+        padding: 3px 0px 3px 35px;
+        font-size: 14pt;
+        width: 35px;
+        min-width: 35px;
     }
     .search-box:focus {
-        width: 60%;
-        min-width: 5em;
+        width: calc(100vw - 180px);
+        min-width: 0;
+    }
+    .gallery {
+        width: 90vw;
+        margin-left: calc(50% - 45vw);
+    }
+    .gallery-container {
+        width: 90vw;
+        margin-left: calc(50% - 45vw);
     }
     .gallery-cell, .search-cell {
-        width: 20vw;
-        height: 30vw;
+        width: 25vw;
+        height: 37.5vw;
     }
     .gallery-container>h3 {
         font-size: 12pt;
@@ -207,5 +164,29 @@ a {
     }
     .search-cell:nth-of-type(3n) {
         margin-right: 0;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1050px) {
+    .gallery-container>h3 {
+        font-size: 14pt;
+    }
+    .gallery-cell, .search-cell {
+        width: 18vw;
+        height: 27vw;
+    }
+    .search-box:focus {
+        width: 230px;
+        min-width: 0;
+    }
+}
+
+@media screen and (min-width: 1050px) and (max-width: 1600px) {
+    .gallery-container>h3 {
+        font-size: 16pt;
+    }
+    .gallery-cell, .search-cell {
+        width: 14vw;
+        height: 21vw;
     }
 }

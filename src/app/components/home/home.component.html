@@ -2,13 +2,11 @@
     <div class="title-container-left">
         <a routerLink="/home">
             <img class="hv-logo" src="../../../assets/images/huawei_video_logo_reverse.png">
-            <h1 class="title">HUAWEI VIDEO</h1>
+            <p class="title">HUAWEI VIDEO</p>
         </a>
     </div>
-    <input type="image" class="logout-icon" src="../../../assets/images/baseline_logout_white_48dp.png"
-        (click)="logout()">
-    <input class="search-box" [(ngModel)]="query" (ngModelChange)="getSearchResults()" type="text"
-        onclick="this.select()" autocomplete="off" maxlength="25">
+    <input type="image" class="logout-icon" src="../../../assets/images/baseline_logout_white_48dp.png" (click)="logout()" AutoComplete=off>
+    <input class="search-box" [(ngModel)]="query" (ngModelChange)="getSearchResults()" type="text" onclick="this.select()" AutoComplete=off maxlength="25">
 </div>
 
 <div *ngIf="!searchResults.length" class="page-container-without-search">

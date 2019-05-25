@@ -8,4 +8,6 @@ export class Movie {
     };
     tmdbId: number;
     video: string;
+    poster: any;
+    backdrop: any;
 }

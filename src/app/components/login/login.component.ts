@@ -55,22 +55,6 @@ export class LoginComponent implements OnInit {
                 data => {
                     if (data.sub && data.token) {
                         this.authenticationService.getUser(data)
-<<<<<<< HEAD
-                            .subscribe(
-                                user => {
-                                    localStorage.setItem('currentUser', JSON.stringify(user));
-                                    this.authenticationService.currentUserSubject.next(user);
-                                    console.log("got user")
-                                    console.log('login -next');
-                                    this.router.navigate(['/home']);
-                                },
-                                error => {
-                                    console.log("login -error");
-                                    this.alertService.error(error);
-                                    this.loading = false;
-                                }
-                            )
-=======
                         .subscribe(
                             user => {
                                 localStorage.setItem('currentUser', JSON.stringify(user));
@@ -86,7 +70,6 @@ export class LoginComponent implements OnInit {
                                 this.loading = false;
                             }
                         )
->>>>>>> db141dd9f4996249ea73f847f02a2c77d1b0dd45
                     }
                 },
                 error => {

@@ -41,18 +41,35 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     getTopPopMovies(): void {
         this.movieService.getTopPop()
-            .subscribe(topPopMovies =>
-                this.topPopMovies = topPopMovies);
+            .subscribe(topPopMovies => {
+                this.topPopMovies = topPopMovies
+
+                this.topPopMovies.forEach((movie) => {
+                    this.getImages(movie);
+                });
+            });
     }
 
     getRecommendedMovies(): void {
         this.movieService.getRecommendedByUserId(this.currentUser.id)
-            .subscribe(recommendedMovies => this.recommendedMovies = recommendedMovies);
+            .subscribe(recommendedMovies => {
+            this.recommendedMovies = recommendedMovies
+
+                this.recommendedMovies.forEach((movie) => {
+                    this.getImages(movie);
+                });
+            });
     }
 
     getWatchedMovies(): void {
         this.movieService.getWatchedByUserId(this.currentUser.id)
-            .subscribe(watchedMovies => this.watchedMovies = watchedMovies);
+            .subscribe(watchedMovies => {
+            this.watchedMovies = watchedMovies
+
+                this.watchedMovies.forEach((movie) => {
+                    this.getImages(movie);
+                });
+            });
     }
 
     getSearchResults(): void {
@@ -60,7 +77,27 @@ export class HomeComponent implements OnInit, OnDestroy {
             .subscribe(searchResults => this.searchResults = searchResults);
     }
 
-    
+    getImages(movie: Movie) {
+        this.loading = true;
+        this.movieService.getMovieImages(movie).subscribe(imagesResponse => {
+            this.movieService.getMoviePoster(imagesResponse).subscribe(data => {
+                let reader = new FileReader();
+                reader.addEventListener("load", () => {
+                    movie.poster = reader.result;
+                }, false);
+
+                if (data) {
+                    reader.readAsDataURL(data);
+                }
+                this.loading = false;
+            }, error => {
+                this.loading = false;
+                console.log(error);
+            });
+        })
+    }
+
+
     ngOnInit() {
         this.getTopPopMovies();
         this.getRecommendedMovies();

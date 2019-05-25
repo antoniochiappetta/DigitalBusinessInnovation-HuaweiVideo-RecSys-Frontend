@@ -5,7 +5,8 @@
             <h1 class="title">HUAWEI VIDEO</h1>
         </a>
     </div>
-    <input type="image" class="logout-icon" src="../../../assets/images/baseline_logout_white_48dp.png" (click)="logout()">
+    <input type="image" class="logout-icon" src="../../../assets/images/baseline_logout_white_48dp.png"
+        (click)="logout()">
     <input class="search-box" [(ngModel)]="query" (ngModelChange)="getSearchResults()" type="text"
         onclick="this.select()" autocomplete="off" maxlength="25">
 </div>
@@ -15,7 +16,8 @@
         <h3>TOP POPULAR MOVIES</h3>
         <div class="gallery">
             <a *ngFor="let topPopMovie of topPopMovies">
-                <div class="gallery-cell" style="background-image: url({{topPopMovie}});"></div>
+                <img *ngIf="!topPopMovie.poster" class="gallery-cell">
+                <img *ngIf="topPopMovie.poster" class="gallery-cell" [src]=topPopMovie.poster>
             </a>
         </div>
     </div>
@@ -24,7 +26,8 @@
         <h3>CHOSEN FOR YOU</h3>
         <div class="gallery">
             <a *ngFor="let recommendedMovie of recommendedMovies">
-                <div class="gallery-cell"></div>
+                    <img *ngIf="!recommendedMovie.poster" class="gallery-cell">
+                    <img *ngIf="recommendedMovie.poster" class="gallery-cell" [src]=recommendedMovie.poster>
             </a>
         </div>
     </div>
@@ -33,7 +36,8 @@
         <h3>CONTINUE WATHCING</h3>
         <div class="gallery">
             <a *ngFor="let watchedMovie of watchedMovies">
-                <div class="gallery-cell"></div>
+                    <img *ngIf="!watchedMovie.poster" class="gallery-cell">
+                    <img *ngIf="watchedMovie.poster" class="gallery-cell" [src]=watchedMovie.poster>
             </a>
         </div>
     </div>

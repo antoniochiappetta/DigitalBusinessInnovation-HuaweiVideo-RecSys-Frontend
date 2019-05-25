@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { User } from '../../models/user';
 import { Movie } from '../../models/movie';
@@ -31,6 +31,7 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private authenticationService: AuthenticationService,
     private interactionService: InteractionService,
     private alertService: AlertService,
@@ -40,19 +41,15 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
     this.currentUserSubscription = this.authenticationService.currentUserSubject.subscribe(user => {
       this.currentUser = user;
     })
-    this.movie = new Movie()
-    this.movie.id = 1
-    this.movie.description = "Una rivisitazione live-action del film Disney del 1992 con lo stesso nome."
-    this.movie.title = "Aladdin (2019)"
-    this.movie.rating = {
-      score: 4.5,
-      support: 10
-    }
-    this.movie.tmdbId = 420817
-    this.movie.video = "JcMtWwiyzpU"
-    this.getImages();
-    this.setInteraction();
-    this.iframe = this.embedService.embed(this.movieService.getYoutubeTrailer(this.movie));
+    this.route.queryParams.subscribe(data => {
+      this.movieService.getMovieById(data.movieId).subscribe(data => {
+        this.movie = data
+        this.movie.video = "JcMtWwiyzpU" // TO BE REMOVED WHEN MODEL ON BE IS FIXED
+        this.getImages();
+        this.setInteraction();
+        this.iframe = this.embedService.embed(this.movieService.getYoutubeTrailer(this.movie));
+      });
+    })
   }
 
   ngOnInit() {

@@ -4,19 +4,87 @@ html {
     background-color: #e9ecef;
 }
 
-.jumbotron{
+.jumbotron {
     border-radius: 0 !important;
-} 
+}
 
-.jumbotron-return{
-    padding: 64px 32px;
+.jumbotron-return {
+    padding: 64px 32px 0 32px;
     background-color: #e9ecef;
+}
+
+.login-registration-form {
+    margin-top: 40px;
+    background-color: white;
+    border: 2px solid #aaa;
+    padding: 4vw;
+    border-radius: 10px;
 }
 
 /**
  * Colors
  */
 
- :root {
+:root {
     --main-huawei-color: #f03d32;
-  }
+}
+
+/*
+ * top-bar
+ */
+
+.top-bar {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    padding: 10px 50px;
+    background-color: var(--main-huawei-color);
+    top: 0;
+    box-shadow: 0px 6px 11px -1px rgba(0, 0, 0, 0.3);
+    z-index: 20;
+}
+
+.hv-logo {
+    position: relative;
+    height: 45px;
+    float: left;
+    margin-right: 20px;
+}
+
+.title-container-left {
+    float: left;
+    position: relative;
+    width: auto;
+    align-items: center;
+    display: flex;
+}
+
+.title {
+    display: inline-block;
+    color: white;
+    font-size: 24pt;
+    line-height: 45px;
+    margin: 0;
+}
+
+.logout-icon {
+    height: 45px;
+    float: right;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 700px), screen and (min-resolution: 300dpi) {
+    .top-bar {
+        padding: 10px 20px;
+    }
+    .hv-logo {
+        height: 35px;
+    }
+    .logout-icon {
+        height: 35px;
+    }
+    .title {
+        display: none;
+    }
+}

@@ -23,4 +23,9 @@ export class AppComponent {
         this.authenticationService.logout();
         this.router.navigate(['/login']);
     }
+
+    // resets the scroll amount on every route change if called by router-outlet
+    onActivate() {
+        window.scroll(0,0);
+    }
 }

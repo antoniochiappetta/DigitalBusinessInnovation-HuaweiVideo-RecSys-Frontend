@@ -1,97 +1,138 @@
-.top-bar {
-    position: fixed;
-    left: 0;
-    width: 100%;
-    padding: 10px 50px;
-    background-color: var(--main-huawei-color);
-    top: 0;
-    box-shadow: 0px 6px 11px -1px rgba(0, 0, 0, 0.3);
-    z-index: 20;
+html, body {
+   overflow: hidden;
+   margin: 0;
+   padding: 0;
 }
 
-.hv-logo {
-    position: relative;
-    display: inline;
-    height: 3rem;
-    float: left;
-    margin: .1rem 15px .25rem 0;
-}
-
-.title-container-left {
-    display: inline;
-    float: left;
-    position: relative;
-    width: auto;
-}
-
-.title {
-    display: inline-block;
-    color: white;
-    line-height: 3rem;
-}
-
-.logout-icon {
-    height: 45px;
-    float: right;
-    margin: 4px 0 0 20px;
-    cursor: pointer;
-}
-
-@media screen and (max-width: 700px), screen and (min-resolution: 300dpi) {
-    .top-bar{
-        padding: 10px 20px;
-    }
-
-    .title {
-        display: none;
-    }
-    
-    .search-box:focus {
-        width: 60%;
-        min-width: 5em;
-    }
-
-    .gallery-cell {
-        width: 20vw;
-        height: 30vw;
-    }
-
-    .gallery-container > h3 {
-        font-size: 12pt;
-    }
+.jumbotron-return {
+   margin: 0 !important;
+   padding: 0 !important;
 }
 
 .background-container {
-    width: 100vw;
-    height: 100vh;
-    margin-left: calc(50% - 50vw);
+   width: calc(100vw + 50px);
+   height: calc(100vh + 50px);
+   background-repeat: no-repeat;
+   filter: blur(10px) brightness(35%);
+   background-size: cover;
+   position: fixed;
+   left: -25px;
+   top: -25px;
+   background-position-x: center;
+   background-position-y: center;
 }
 
- .background-image {
-    min-width: 100vw;
-    min-height: 100vh;
-    position: fixed;
-    filter: blur(10px) brightness(35%);
- }
+.details-container {
+   position: relative;
+   width: 85vw;
+   margin-left: calc(50% - 42.5vw);
+   margin-top: 30px;
+   bottom: 0;
+   padding: 0;
+   /* outline: 2px solid lime; */
+}
 
- .detail-container {
-    height: 100vh;
-    width: 100vw;
-    display : flex;
-    align-items : center;
-    text-align: center;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
-    padding-left: 5vw;
-    padding-right: 5vw;
- }
+.poster {
+   float: left;
+   height: calc((100vh - 65px) * 0.8);
+   max-width: 28vw;
+   max-height: 42vw;
+}
 
- .detail-column {
-    margin-top: 5vh;
-    margin-bottom: 5vh;
- }
+.trailer-container {
+   float: right;
+   max-width: 48vw;
+   height: min(63vh, calc(48vw / 16 * 9));
+   width: 112vh;
+}
 
- .poster {
-    max-height: 60%;
-    max-width: 60%
- }
+.trailer-table, .poster-table {
+   display: table;
+   float: right;
+   /* outline: 2px solid fuchsia; */
+}
+
+.trailer-table {
+   float: right;
+}
+
+.poster-table {
+   float: left;
+}
+
+.trailer-table-cell, .poster-table-cell {
+   display: table-cell;
+   vertical-align: middle;
+   height: calc((100vh - 65px) * 0.8);
+   max-width: 28vw;
+   max-height: 42vw;
+   /* outline: 2px solid yellow; */
+}
+
+.title-container {
+   margin-top: 20px;
+   color: white;
+   width: 85vw;
+   position: relative;
+   margin-left: calc(50% - 42.5vw);
+   bottom: 0;
+   padding: 0;
+}
+
+.movie-title {
+   font-size: 30pt;
+}
+
+.movie-description {
+   font-size: 18pt;
+   text-align: justify;
+   font-weight: lighter;
+}
+
+@media screen and (max-width: 700px), screen and (min-resolution: 300dpi) {
+   .details-container {
+      width: 90vw;
+      margin-left: calc(50% - 45vw);
+   }
+   .title-container {
+      width: 90vw;
+      margin-left: calc(50% - 45vw);
+   }
+   .trailer-table, .poster-table, .trailer-table-cell, .poster-table-cell {
+      display: block;
+      float: unset;
+      height: unset;
+      max-width: unset;
+      max-height: unset;
+      text-align: center;
+   }
+   .trailer-table-cell, .poster-table-cell {
+      width: 90vw;
+      margin-bottom: 80px;
+   }
+   .poster {
+      height: unset;
+      max-width: 60vw;
+      max-height: unset;
+      float: unset;
+   }
+
+   .movie-title {
+      font-size: 18pt;
+      text-align: center;
+   }
+
+   .trailer-container {
+      float: unset;
+      width: 80vw;
+      height: unset;
+      max-width: unset;
+      margin-left: 5vw;
+   }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1050px) {}
+
+@media screen and (min-width: 1050px) and (max-width: 1600px) {}
+
+@media screen and (min-width: 1600px) {}

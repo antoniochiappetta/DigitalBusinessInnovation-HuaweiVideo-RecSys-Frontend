@@ -28,11 +28,8 @@ import { RegistrationComponent } from './components/registration/registration.co
         HttpClientModule,
         AppRoutingModule,
         NgbModule,
-<<<<<<< HEAD
-        FormsModule
-=======
+        FormsModule,
         EmbedVideo.forRoot()
->>>>>>> db141dd9f4996249ea73f847f02a2c77d1b0dd45
     ],
     declarations: [
         AppComponent,

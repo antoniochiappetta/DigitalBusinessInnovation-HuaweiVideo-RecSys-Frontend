@@ -8,6 +8,11 @@ html {
     border-radius: 0 !important;
 } 
 
+.jumbotron-return{
+    padding: 64px 32px;
+    background-color: #e9ecef;
+}
+
 /**
  * Colors
  */

@@ -11,7 +11,7 @@
 
 <div *ngIf="!searchResults.length" class="page-container-without-search">
     <div class="gallery-container">
-        <h3>TOP POPULAR MOVIES</h3>
+        <h3>TRENDING NOW</h3>
         <div class="gallery">
             <a *ngFor="let topPopMovie of topPopMovies" (click)="selectMovie(topPopMovie)">
                 <img *ngIf="!topPopMovie.poster" class="gallery-cell">
@@ -21,7 +21,7 @@
     </div>
 
     <div class="gallery-container">
-        <h3>CHOSEN FOR YOU</h3>
+        <h3>RECOMMENDED FOR YOU</h3>
         <div class="gallery">
             <a *ngFor="let recommendedMovie of recommendedMovies" (click)="selectMovie(recommendedMovie)">
                     <img *ngIf="!recommendedMovie.poster" class="gallery-cell">
@@ -31,9 +31,9 @@
     </div>
 
     <div class="gallery-container">
-        <h3>CONTINUE WATHCING</h3>
+        <h3>RECENTLY WATCHED</h3>
         <div class="gallery">
-            <a *ngFor="let watchedMovie of watchedMovies" (click)="selectMovie(watchedMovie)">
+            <a *ngFor="let watchedMovie of watchedMovies.slice(0, 15)" (click)="selectMovie(watchedMovie)">
                     <img *ngIf="!watchedMovie.poster" class="gallery-cell">
                     <img *ngIf="watchedMovie.poster" class="gallery-cell" [src]=watchedMovie.poster>
             </a>
@@ -43,9 +43,24 @@
 
 <div *ngIf="searchResults.length" class="page-container-with-search">
     <div class="search-results-container">
-        <h3>SEARCH RESULTS</h3>
-        <a *ngFor="let searchResult of searchResults">
+        <h3>RESULTS FOR "{{query}}"</h3>
+        <!-- <a *ngFor="let searchResult of searchResults" (click)="selectMovie(searchResult)"> -->
             <div class="search-cell"></div>
-        </a>
+            <div class="search-cell"></div>
+            <div class="search-cell"></div>
+            <div class="search-cell"></div>
+            <div class="search-cell"></div>
+            <div class="search-cell"></div>
+            <div class="search-cell"></div>
+            <div class="search-cell"></div>
+            <div class="search-cell"></div>
+            <div class="search-cell"></div>
+            <div class="search-cell"></div>
+            <div class="search-cell"></div>
+            <div class="search-cell"></div>
+            <div class="search-cell"></div>
+            <div class="search-cell"></div>
+            <div class="search-cell"></div>
+        <!-- </a> -->
     </div>
 </div>

@@ -9,7 +9,7 @@ html {
 }
 
 .jumbotron-return {
-    padding: 64px 32px;
+    padding: 64px 32px 0 32px;
     background-color: #e9ecef;
 }
 

@@ -9,7 +9,8 @@ import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
     selector: 'registration',
-    templateUrl: './registration.component.html'
+    templateUrl: './registration.component.html',
+    styleUrls: ['./registration.component.css']
   })
 export class RegistrationComponent implements OnInit {
     registerForm: FormGroup;

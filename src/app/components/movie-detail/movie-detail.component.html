@@ -8,8 +8,22 @@
   <input type="image" class="logout-icon" src="../../../assets/images/baseline_logout_white_48dp.png" (click)="logout()">
 </div>
 
-<div class="fake-top-bar"></div>
-
-<img [src]="backdrop">
-<img [src]="poster">
-<div [innerHtml]="iframe"></div>
+<div class="background-container">
+  <img [src]="backdrop" class="background-image">
+  <div class="row detail-container">
+    <div class="col-sm-6 detail-column">
+      <img [src]="poster" class="poster">
+    </div>
+    <div class="col-sm-6 detail-column" style="max-height: 60%; width: 100%;">
+      <div class="row">
+          <h1 style="color: white; text-align: left;">{{movie.title}}</h1>
+        </div>
+        <div class="row">
+          <h3 style="color: white; text-align: left;">{{movie.description}}</h3>
+        </div>
+        <div class="row">
+          <div [innerHtml]="iframe" class="embed-responsive embed-responsive-16by9"></div>
+        </div>
+    </div>
+  </div>
+</div>

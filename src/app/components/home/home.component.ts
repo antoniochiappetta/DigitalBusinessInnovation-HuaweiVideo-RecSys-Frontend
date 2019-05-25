@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 
 import { User } from '../../models/user';
 import { Movie } from '../../models/movie';
@@ -123,5 +123,16 @@ export class HomeComponent implements OnInit, OnDestroy {
                     this.alertService.error(error);
                     this.loading = false;
                 })
+    }
+
+    // MARK: - Movie selection
+
+    selectMovie(movie: Movie) {
+        const navigationExtras: NavigationExtras = {
+            queryParams: {
+                'movieId': movie.id
+            }
+        };
+        this.router.navigate(['movie-detail'], navigationExtras);
     }
 }

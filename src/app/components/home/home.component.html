@@ -15,7 +15,7 @@
     <div class="gallery-container">
         <h3>TOP POPULAR MOVIES</h3>
         <div class="gallery">
-            <a *ngFor="let topPopMovie of topPopMovies">
+            <a *ngFor="let topPopMovie of topPopMovies" (click)="selectMovie(topPopMovie)">
                 <img *ngIf="!topPopMovie.poster" class="gallery-cell">
                 <img *ngIf="topPopMovie.poster" class="gallery-cell" [src]=topPopMovie.poster>
             </a>
@@ -25,7 +25,7 @@
     <div class="gallery-container">
         <h3>CHOSEN FOR YOU</h3>
         <div class="gallery">
-            <a *ngFor="let recommendedMovie of recommendedMovies">
+            <a *ngFor="let recommendedMovie of recommendedMovies" (click)="selectMovie(recommendedMovie)">
                     <img *ngIf="!recommendedMovie.poster" class="gallery-cell">
                     <img *ngIf="recommendedMovie.poster" class="gallery-cell" [src]=recommendedMovie.poster>
             </a>
@@ -35,7 +35,7 @@
     <div class="gallery-container">
         <h3>CONTINUE WATHCING</h3>
         <div class="gallery">
-            <a *ngFor="let watchedMovie of watchedMovies">
+            <a *ngFor="let watchedMovie of watchedMovies" (click)="selectMovie(watchedMovie)">
                     <img *ngIf="!watchedMovie.poster" class="gallery-cell">
                     <img *ngIf="watchedMovie.poster" class="gallery-cell" [src]=watchedMovie.poster>
             </a>

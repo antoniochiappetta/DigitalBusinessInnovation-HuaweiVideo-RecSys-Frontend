@@ -55,6 +55,6 @@ export class MovieService {
     // MARK: - Youtube Trailers
 
     getYoutubeTrailer(movie: Movie): string {
-        return `${Network.youtubeUrl}/${movie.video}`
+        return `${Network.youtubeUrl}/${movie.ytbeId}`
     }
 }

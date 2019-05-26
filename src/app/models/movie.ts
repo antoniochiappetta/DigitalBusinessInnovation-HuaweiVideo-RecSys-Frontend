@@ -7,7 +7,7 @@ export class Movie {
         support: number;
     };
     tmdbId: number;
-    video: string;
+    ytbeId: string;
     poster: any;
     backdrop: any;
 }

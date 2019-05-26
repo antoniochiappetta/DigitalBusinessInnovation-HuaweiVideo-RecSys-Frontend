@@ -44,11 +44,11 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
     this.route.queryParams.subscribe(data => {
       this.movieService.getMovieById(data.movieId).subscribe(data => {
         this.movie = data
-        // this.movie.video = "JcMtWwiyzpU" // TO BE REMOVED WHEN MODEL ON BE IS FIXED
+        this.movie.video = "JcMtWwiyzpU" // TO BE REMOVED WHEN MODEL ON BE IS FIXED
         this.getImages();
         this.setInteraction();
         this.iframe = this.embedService.embed(this.movieService.getYoutubeTrailer(this.movie));
-        console.log(this.movie.video)
+        // console.log(this.movie.video)
       });
     })
   }

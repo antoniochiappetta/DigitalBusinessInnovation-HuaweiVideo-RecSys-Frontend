@@ -28,12 +28,8 @@ export class MovieService {
         return this.http.get<any>(`${Network.apiUrl}/movie/recommended/${user_id}`).pipe(map(data => data.items));
     }
 
-    getMoviesByKeywords(query: string[]): Observable<Movie[]> {
-        return this.http.get<any>(`${Network.apiUrl}/movie/searchByKeywords`, {
-            params: {
-                q: query
-            }
-        }).pipe(map(data => data.items));
+    getMoviesByKeywords(query: string): Observable<Movie[]> {
+        return this.http.get<any>(`${Network.apiUrl}/movie/searchByKeywords?q=${query}`).pipe(map(data => data.items));
     }
 
     // MARK: - Images from TheMovieDB

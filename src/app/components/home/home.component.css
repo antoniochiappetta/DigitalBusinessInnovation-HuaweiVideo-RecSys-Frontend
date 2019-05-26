@@ -68,7 +68,7 @@ a {
 
 .gallery::-webkit-scrollbar {
     width: 0px;
-    height: 6px;
+    height: 8px;
     background: rgba(0, 0, 0, 0.1);
     border-radius: 12px;
 }
@@ -85,6 +85,7 @@ a {
     width: 10vw;
     height: 15vw;
     margin-right: 10px;
+    margin-bottom: 5px;
     background: var(--main-huawei-color);
     border-radius: 10px;
     cursor: pointer;
@@ -94,7 +95,7 @@ a {
     text-align: justify;
     -ms-text-justify: distribute-all-lines;
     text-justify: distribute-all-lines;
-    margin-top: 40px;
+    margin-top: 20px;
     text-justify: distribute-all-lines;
     width: 85vw;
     margin-left: calc(50% - 42.5vw);
@@ -109,7 +110,8 @@ a {
     background: var(--main-huawei-color);
     counter-increment: gallery-cell;
     border-radius: 10px;
-    margin-top: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     cursor: pointer;
 }
 
@@ -135,6 +137,9 @@ a {
     .gallery, .gallery-container, .search-results-container {
         width: 90vw;
         margin-left: calc(50% - 45vw);
+    }
+    .gallery::-webkit-scrollbar {
+        height: 6px;
     }
     .gallery-cell, .search-cell {
         width: 25vw;

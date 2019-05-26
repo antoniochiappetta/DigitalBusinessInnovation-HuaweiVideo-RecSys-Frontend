@@ -73,9 +73,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     getSearchResults(): void {
+        window.scroll(0,0);
         this.movieService.getMoviesByKeywords((this.query.replace(/  +/g, ' ')).split(" "))
-            .subscribe(searchResults => this.searchResults = searchResults);
-    }
+            .subscribe(searchResults => {
+                this.searchResults = searchResults
+    
+                    this.searchResults.forEach((movie) => {
+                        this.getImages(movie);
+                    });
+                });
+        }
 
     getImages(movie: Movie) {
         this.loading = true;

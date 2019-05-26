@@ -49,6 +49,7 @@ html, body {
 .trailer-table, .poster-table {
    display: table;
    float: right;
+   margin-bottom: 60px;
    /* outline: 2px solid fuchsia; */
 }
 

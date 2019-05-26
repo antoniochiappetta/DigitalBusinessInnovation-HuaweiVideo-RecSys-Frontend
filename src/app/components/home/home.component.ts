@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     getRecommendedMovies(): void {
         this.movieService.getRecommendedByUserId(this.currentUser.id)
             .subscribe(recommendedMovies => {
-            this.recommendedMovies = recommendedMovies
+                this.recommendedMovies = recommendedMovies
 
                 this.recommendedMovies.forEach((movie) => {
                     this.getImages(movie);
@@ -64,7 +64,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     getWatchedMovies(): void {
         this.movieService.getWatchedByUserId(this.currentUser.id)
             .subscribe(watchedMovies => {
-            this.watchedMovies = watchedMovies
+                this.watchedMovies = watchedMovies
 
                 this.watchedMovies.forEach((movie) => {
                     this.getImages(movie);
@@ -73,16 +73,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     getSearchResults(): void {
-        window.scroll(0,0);
-        this.movieService.getMoviesByKeywords((this.query.replace(/  +/g, ' ')).split(" "))
+        window.scroll(0, 0);
+        this.movieService.getMoviesByKeywords((this.query.replace(/  +/g, ' ')))
             .subscribe(searchResults => {
-                this.searchResults = searchResults
-    
-                    this.searchResults.forEach((movie) => {
-                        this.getImages(movie);
-                    });
+                if (!searchResults == null) {
+                    this.searchResults = searchResults
+                }
+                this.searchResults.forEach((movie) => {
+                    this.getImages(movie);
                 });
-        }
+            });
+    }
 
     getImages(movie: Movie) {
         this.loading = true;

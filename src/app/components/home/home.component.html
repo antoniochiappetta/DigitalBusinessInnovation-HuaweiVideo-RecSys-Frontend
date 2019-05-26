@@ -44,22 +44,6 @@
 <div *ngIf="query.length" class="page-container-with-search">
     <div class="search-results-container">
         <h3>{{searchResults.length}} RESULTS FOR "{{query | uppercase}}"</h3>
-        <!-- <div class="search-cell" *ngFor="let searchResult of searchResults" (click)="selectMovie(searchResult)"></div> -->
-            <div class="search-cell"></div>
-            <div class="search-cell"></div>
-            <div class="search-cell"></div>
-            <div class="search-cell"></div>
-            <div class="search-cell"></div>
-            <div class="search-cell"></div>
-            <div class="search-cell"></div>
-            <div class="search-cell"></div>
-            <div class="search-cell"></div>
-            <div class="search-cell"></div>
-            <div class="search-cell"></div>
-            <div class="search-cell"></div>
-            <div class="search-cell"></div>
-            <div class="search-cell"></div>
-            <div class="search-cell"></div>
-            <div class="search-cell"></div>
+        <div class="search-cell" *ngFor="let searchResult of searchResults" (click)="selectMovie(searchResult)"></div>
     </div>
 </div>

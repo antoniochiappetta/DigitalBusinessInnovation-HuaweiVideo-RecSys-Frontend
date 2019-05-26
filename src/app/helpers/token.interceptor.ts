@@ -13,8 +13,8 @@ export class TokenInterceptor implements HttpInterceptor {
         // add authorization header with jwt token if available
         if (request.url.startsWith(Network.apiUrl)) {
             let currentToken = this.authenticationService.currentTokenValue;
-            console.log('Looking for token');
-            console.log(currentToken);
+            // console.log('Looking for token');
+            // console.log(currentToken);
             if (currentToken) {
                 request = request.clone({
                     setHeaders: { 

@@ -48,6 +48,7 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
         this.getImages();
         this.setInteraction();
         this.iframe = this.embedService.embed(this.movieService.getYoutubeTrailer(this.movie));
+        // console.log(this.movie.video)
       });
     })
   }

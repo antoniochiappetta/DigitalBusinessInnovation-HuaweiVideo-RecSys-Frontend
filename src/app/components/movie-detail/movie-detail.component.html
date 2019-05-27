@@ -11,7 +11,7 @@
 
 <div class="background-container" [ngStyle]="{ 'background-image': 'url(' + backdrop + ')'}"></div>
 
-<div class="title-container">
+<div *ngIf="movie" class="title-container">
     <p class="movie-title">{{movie.title}}</p>
     <!-- <p class="movie-description">{{movie.description}}</p> -->
 </div>

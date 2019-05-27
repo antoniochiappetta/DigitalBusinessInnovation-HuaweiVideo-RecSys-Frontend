@@ -82,7 +82,7 @@ export class HomeComponent implements OnInit, OnDestroy {
                     searchResults.forEach((movie) => {
                         this.getImages(movie);
                     });
-                    
+
                     this.searchResults = searchResults;
                 });
         }

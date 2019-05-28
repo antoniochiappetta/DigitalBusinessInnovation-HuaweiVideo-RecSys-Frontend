@@ -5,9 +5,9 @@
             <p class="title">HUAWEI VIDEO</p>
         </a>
     </div>
-    <input type="image" class="logout-icon" src="../../../assets/images/baseline_logout_white_48dp.png"
+    <input type="image" class="logout-icon" name="no-autofill" src="../../../assets/images/baseline_logout_white_48dp.png"
         (click)="logout()" AutoComplete=off>
-    <input class="search-box" [(ngModel)]="query" (ngModelChange)="getSearchResults()" type="text"
+    <input class="search-box" name="no-autofill" [(ngModel)]="query" (ngModelChange)="getSearchResults()" type="text"
         onclick="this.select()" AutoComplete=off maxlength="25">
 </div>
 

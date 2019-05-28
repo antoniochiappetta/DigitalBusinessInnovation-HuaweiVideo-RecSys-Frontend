@@ -78,10 +78,11 @@ export class HomeComponent implements OnInit, OnDestroy {
         else {
             this.movieService.getMoviesByKeywords((this.query.replace(/  +/g, ' ')))
                 .subscribe(searchResults => {
-                    searchResults.forEach((movie) => {
+                    this.searchResults = searchResults;
+                    this.searchResults.forEach((movie) => {
                         this.getImages(movie);
                     });
-                    this.searchResults = searchResults;
+
                 });
         }
     }

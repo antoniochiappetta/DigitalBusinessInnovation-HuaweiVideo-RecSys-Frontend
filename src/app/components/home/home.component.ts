@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { User } from '../../models/user';
 import { Movie } from '../../models/movie';
@@ -29,13 +30,21 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     constructor(
         private router: Router,
+        private route: ActivatedRoute,
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
         private userService: UserService,
-        private movieService: MovieService
+        private movieService: MovieService,
+        private location: Location
     ) {
         this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
             this.currentUser = user;
+        });
+        this.route.queryParams.subscribe(params => {
+            if (params['q']) {
+                this.query = params['q'];
+                this.getSearchResults();
+            }
         });
     }
 
@@ -74,6 +83,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     getSearchResults(): void {
         window.scroll(0, 0);
+        this.location.go('/home?q=' + this.query);
         if (this.query == "") { this.searchResults = [] }
         else {
             this.movieService.getMoviesByKeywords((this.query.replace(/  +/g, ' ')))
@@ -107,7 +117,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         })
     }
 
-    emptyQuery(): void{
+    emptyQuery(): void {
         this.query = "";
     }
 

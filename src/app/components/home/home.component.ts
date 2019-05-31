@@ -107,6 +107,10 @@ export class HomeComponent implements OnInit, OnDestroy {
         })
     }
 
+    emptyQuery(): void{
+        this.query = "";
+    }
+
 
     ngOnInit() {
         this.getTopPopMovies();

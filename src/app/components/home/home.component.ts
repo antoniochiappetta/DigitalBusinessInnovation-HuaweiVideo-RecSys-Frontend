@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { User } from '../../models/user';
 import { Movie } from '../../models/movie';
-import { UserService } from '../../services/user.service';
 import { MovieService } from '../../services/movie.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { AlertService } from '../../services/alert.service';
@@ -24,16 +23,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     currentUserSubscription: Subscription;
     topPopMovies: Movie[] = [];
     recommendedMovies: Movie[] = [];
+    searchResultsTemp: Movie[] = [];
     searchResults: Movie[] = [];
     watchedMovies: Movie[] = [];
     query: string = "";
+    noneString = "none";
 
     constructor(
         private router: Router,
         private route: ActivatedRoute,
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
-        private userService: UserService,
         private movieService: MovieService,
         private location: Location
     ) {
@@ -84,15 +84,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     getSearchResults(): void {
         window.scroll(0, 0);
         this.location.go('/home?q=' + this.query);
-        if (this.query == "") { this.searchResults = [] }
+        if (this.query == "") { this.searchResultsTemp = [] }
         else {
             this.movieService.getMoviesByKeywords((this.query.replace(/  +/g, ' ')))
-                .subscribe(searchResults => {
-                    this.searchResults = searchResults;
-                    this.searchResults.forEach((movie) => {
+                .subscribe(searchResultsTemp => {
+                    this.searchResultsTemp = searchResultsTemp;
+                    this.searchResultsTemp.forEach((movie) => {
                         this.getImages(movie);
                     });
-
+                    console.log(JSON.stringify(this.searchResults) == JSON.stringify(this.searchResultsTemp));
+                    this.searchResults = this.searchResultsTemp;
                 });
         }
     }

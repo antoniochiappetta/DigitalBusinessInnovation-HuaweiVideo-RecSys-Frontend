@@ -13,7 +13,6 @@
 
 <div *ngIf="movie" class="title-container">
     <p class="movie-title">{{movie.title}}</p>
-    <!-- <p class="movie-description">{{movie.description}}</p> -->
 </div>
 <div class="details-container">
     <div class="poster-table">
@@ -25,6 +24,11 @@
     <div class="trailer-table">
         <div class="trailer-table-cell">
             <div [innerHtml]="iframe" class="trailer-container embed-responsive embed-responsive-16by9"></div>
+
+            <div class="rate-container">
+                <img class="thumb-up" src="../../../assets/images/baseline_thumb_up_white_48dp.png">
+                <img class="thumb-down" src="../../../assets/images/baseline_thumb_down_white_48dp.png">
+            </div>
         </div>
     </div>
 </div>

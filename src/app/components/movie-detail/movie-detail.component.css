@@ -41,33 +41,40 @@ html, body {
 
 .trailer-container {
    float: right;
-   max-width: 48vw;
+   width: 48vw;
    height: min(63vh, calc(48vw / 16 * 9));
-   width: 112vh;
 }
 
 .trailer-table, .poster-table {
    display: table;
    float: right;
-   margin-bottom: 60px;
    /* outline: 2px solid fuchsia; */
 }
 
 .trailer-table {
    float: right;
+   margin-bottom: 60px;
 }
 
 .poster-table {
    float: left;
+   margin-bottom: 30px;
 }
 
 .trailer-table-cell, .poster-table-cell {
    display: table-cell;
    vertical-align: middle;
-   height: calc((100vh - 65px) * 0.8);
    max-width: 28vw;
    max-height: 42vw;
    /* outline: 2px solid yellow; */
+}
+
+.trailer-table-cell {
+   height: calc(((100vh - 65px) * 0.8));
+}
+
+.poster-table-cell {
+   height: calc((100vh - 65px) * 0.8);
 }
 
 .title-container {
@@ -90,6 +97,28 @@ html, body {
    font-weight: lighter;
 }
 
+.rate-container {
+   margin-top: 50px;
+   width: 48vw;
+   float: right;
+   /* border: 1px solid yellow; */
+}
+
+.thumb-up, .thumb-down {
+   width: 8%;
+   opacity: 0.7;
+}
+
+.thumb-up {
+   float: left;
+   margin-left: 30%;
+}
+
+.thumb-down {
+   float: right;
+   margin-right: 30%;
+}
+
 @media screen and (max-width: 700px), screen and (min-resolution: 300dpi) {
    .details-container {
       width: 90vw;
@@ -99,7 +128,7 @@ html, body {
       width: 90vw;
       margin-left: calc(50% - 45vw);
    }
-   .trailer-table, .poster-table, .trailer-table-cell, .poster-table-cell {
+   .trailer-table, .poster-table, .trailer-table-cell, .poster-table-cell, .rate-container {
       display: block;
       float: unset;
       height: unset;
@@ -109,7 +138,7 @@ html, body {
    }
    .trailer-table-cell, .poster-table-cell {
       width: 90vw;
-      margin-bottom: 80px;
+      margin-bottom: 60px;
    }
    .poster {
       height: unset;
@@ -117,22 +146,31 @@ html, body {
       max-height: unset;
       float: unset;
    }
-
    .movie-title {
       font-size: 18pt;
       text-align: center;
    }
-
    .trailer-container {
       float: unset;
       width: 80vw;
       height: unset;
       max-width: unset;
       margin-left: 5vw;
+      margin-bottom: 60px;      
+   }
+
+   .rate-container{
+      float: unset;
+      margin-bottom:150px;
+      width: 90vw;
    }
 }
 
-@media screen and (min-width: 700px) and (max-width: 1050px) {}
+@media screen and (max-width: 1200px) {
+   .thumb-up, .thumb-down {
+      width: 12%;
+   }
+}
 
 @media screen and (min-width: 1050px) and (max-width: 1600px) {}
 
